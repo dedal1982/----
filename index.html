@@ -29,27 +29,20 @@
     </style>
   </head>
   <body>
-    <!-- Content of your landing page -->
-    <h1>Welcome to my Landing Page!</h1>
-    <p>This is some content on my landing page.</p>
-
-    <!-- Cookie Consent Banner -->
     <div id="cookieConsent">
       <p>
         Этот сайт использует cookie-файлы для улучшения вашего опыта.
-        <a href="/cookie-policy">Политика использования Cookie</a>.
+        <a href="cookie-policy.html">Политика использования Cookie</a>.
       </p>
       <button onclick="acceptCookies()">Принять</button>
       <button onclick="declineCookies()">Отклонить</button>
     </div>
 
-    <!-- Ссылка на страницу с политикой cookie (можно разместить в футере) -->
     <footer>
       <a href="cookie-policy.html">Политика использования Cookie</a>
     </footer>
 
     <script>
-      // Function to set a cookie
       function setCookie(name, value, days) {
         let expires = "";
         if (days) {
@@ -60,7 +53,6 @@
         document.cookie = name + "=" + (value || "") + expires + "; path=/";
       }
 
-      // Function to get a cookie
       function getCookie(name) {
         const nameEQ = name + "=";
         const ca = document.cookie.split(";");
@@ -73,47 +65,32 @@
         return null;
       }
 
-      // Function to delete a cookie
       function deleteCookie(name) {
         document.cookie =
           name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
       }
 
-      // Accept Cookies
       function acceptCookies() {
-        setCookie("cookieConsent", "true", 365); // Cookie valid for 1 year
+        setCookie("cookieConsent", "true", 365);
         document.getElementById("cookieConsent").style.display = "none";
-
-        //  Insert code here to initialize services that use cookies
-        //  (e.g., Google Analytics)
-        //  Example: ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview');
       }
 
-      // Decline Cookies
       function declineCookies() {
-        setCookie("cookieConsent", "false", 365); // Cookie valid for 1 year
+        setCookie("cookieConsent", "false", 365);
         document.getElementById("cookieConsent").style.display = "none";
-
-        // Insert code here to remove any cookies and disable services
-        // that use cookies
       }
 
-      // Check if cookie consent is given on page load
       document.addEventListener("DOMContentLoaded", function () {
         const consentCookie = getCookie("cookieConsent");
         const consentBanner = document.getElementById("cookieConsent");
 
         if (consentCookie === "true" || consentCookie === "false") {
-          consentBanner.style.display = "none"; // hide the banner if the user has made a choice
+          consentBanner.style.display = "none";
         } else {
-          consentBanner.style.display = "block"; // Show the banner if no cookie is set
+          consentBanner.style.display = "block";
         }
 
-        // If cookies were accepted, initialize services
         if (consentCookie === "true") {
-          //  Insert code here to initialize services
-          //  (e.g., Google Analytics)
-          //  Example: ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview');
         }
       });
     </script>
